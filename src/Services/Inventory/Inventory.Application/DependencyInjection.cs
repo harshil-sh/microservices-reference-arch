@@ -1,4 +1,5 @@
 using FluentValidation;
+using Inventory.Application.Metrics;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Application.Behaviors;
@@ -14,6 +15,8 @@ public static class DependencyInjection
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
         services.AddValidatorsFromAssembly(assembly);
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+        services.AddSingleton<InventoryMetrics>();
 
         return services;
     }

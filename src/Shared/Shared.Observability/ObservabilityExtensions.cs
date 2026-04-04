@@ -14,7 +14,8 @@ public static class ObservabilityExtensions
     public static IServiceCollection AddObservability(
         this IServiceCollection services,
         string serviceName,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        string[]? additionalMeterNames = null)
     {
         var seqEndpoint = configuration["Observability:SeqEndpoint"] ?? "http://localhost:5341";
 
@@ -40,8 +41,17 @@ public static class ObservabilityExtensions
                     .AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
                     .AddMeter(serviceName)
-                    .AddMeter("MassTransit")
-                    .AddOtlpExporter(options =>
+                    .AddMeter("MassTransit");
+
+                if (additionalMeterNames is not null)
+                {
+                    foreach (var meterName in additionalMeterNames)
+                    {
+                        metrics.AddMeter(meterName);
+                    }
+                }
+
+                metrics.AddOtlpExporter(options =>
                     {
                         options.Endpoint = new Uri($"{seqEndpoint}/ingest/otlp/v1/metrics");
                         options.Protocol = OtlpExportProtocol.HttpProtobuf;

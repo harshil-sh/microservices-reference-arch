@@ -1,6 +1,8 @@
 using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Notifications.Worker.Metrics;
 using Notifications.Worker.Services;
 using Shared.Contracts.Events;
 
@@ -10,11 +12,21 @@ public class NotificationServiceTests
 {
     private readonly Mock<IPublishEndpoint> _publishEndpointMock = new();
     private readonly Mock<ILogger<NotificationService>> _loggerMock = new();
+    private readonly NotificationsMetrics _metrics;
     private readonly NotificationService _service;
 
     public NotificationServiceTests()
     {
-        _service = new NotificationService(_publishEndpointMock.Object, _loggerMock.Object);
+        var meterFactory = new ServiceCollection()
+            .AddMetrics()
+            .BuildServiceProvider()
+            .GetRequiredService<System.Diagnostics.Metrics.IMeterFactory>();
+        _metrics = new NotificationsMetrics(meterFactory);
+
+        _service = new NotificationService(
+            _publishEndpointMock.Object,
+            _loggerMock.Object,
+            _metrics);
     }
 
     [Fact]

@@ -1,7 +1,9 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Orders.Application.Commands.UpdateOrderStatus;
 using Orders.Application.Interfaces;
+using Orders.Application.Metrics;
 using Orders.Domain.Entities;
 using Orders.Domain.Enums;
 using Orders.Domain.Repositories;
@@ -13,14 +15,22 @@ public class UpdateOrderStatusCommandHandlerTests
     private readonly Mock<IOrderRepository> _repositoryMock = new();
     private readonly Mock<IEventPublisher> _publisherMock = new();
     private readonly Mock<ILogger<UpdateOrderStatusCommandHandler>> _loggerMock = new();
+    private readonly OrdersMetrics _metrics;
     private readonly UpdateOrderStatusCommandHandler _handler;
 
     public UpdateOrderStatusCommandHandlerTests()
     {
+        var meterFactory = new ServiceCollection()
+            .AddMetrics()
+            .BuildServiceProvider()
+            .GetRequiredService<System.Diagnostics.Metrics.IMeterFactory>();
+        _metrics = new OrdersMetrics(meterFactory);
+
         _handler = new UpdateOrderStatusCommandHandler(
             _repositoryMock.Object,
             _publisherMock.Object,
-            _loggerMock.Object);
+            _loggerMock.Object,
+            _metrics);
     }
 
     private static Order CreatePendingOrder()

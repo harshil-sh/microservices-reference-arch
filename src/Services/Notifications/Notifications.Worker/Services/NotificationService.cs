@@ -1,4 +1,5 @@
 using MassTransit;
+using Notifications.Worker.Metrics;
 using Shared.Contracts.Events;
 
 namespace Notifications.Worker.Services;
@@ -7,11 +8,16 @@ public class NotificationService : INotificationService
 {
     private readonly IPublishEndpoint _publishEndpoint;
     private readonly ILogger<NotificationService> _logger;
+    private readonly NotificationsMetrics _metrics;
 
-    public NotificationService(IPublishEndpoint publishEndpoint, ILogger<NotificationService> logger)
+    public NotificationService(
+        IPublishEndpoint publishEndpoint,
+        ILogger<NotificationService> logger,
+        NotificationsMetrics metrics)
     {
         _publishEndpoint = publishEndpoint;
         _logger = logger;
+        _metrics = metrics;
     }
 
     public async Task SendOrderReceivedAsync(Guid orderId, Guid customerId, decimal totalAmount, string correlationId, CancellationToken cancellationToken = default)
@@ -63,6 +69,8 @@ public class NotificationService : INotificationService
         };
 
         await _publishEndpoint.Publish(@event, cancellationToken);
+
+        _metrics.NotificationSent(channel);
 
         _logger.LogInformation(
             "NotificationSent event published for order {OrderId} via {Channel}",

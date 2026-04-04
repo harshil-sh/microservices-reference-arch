@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Orders.Application.DTOs;
 using Orders.Application.Interfaces;
 using Orders.Application.Mappings;
+using Orders.Application.Metrics;
 using Orders.Domain.Entities;
 using Orders.Domain.Repositories;
 
@@ -13,15 +14,18 @@ public class PlaceOrderCommandHandler : IRequestHandler<PlaceOrderCommand, Order
     private readonly IOrderRepository _orderRepository;
     private readonly IEventPublisher _eventPublisher;
     private readonly ILogger<PlaceOrderCommandHandler> _logger;
+    private readonly OrdersMetrics _metrics;
 
     public PlaceOrderCommandHandler(
         IOrderRepository orderRepository,
         IEventPublisher eventPublisher,
-        ILogger<PlaceOrderCommandHandler> logger)
+        ILogger<PlaceOrderCommandHandler> logger,
+        OrdersMetrics metrics)
     {
         _orderRepository = orderRepository;
         _eventPublisher = eventPublisher;
         _logger = logger;
+        _metrics = metrics;
     }
 
     public async Task<OrderResponse> Handle(PlaceOrderCommand request, CancellationToken cancellationToken)
@@ -33,6 +37,8 @@ public class PlaceOrderCommandHandler : IRequestHandler<PlaceOrderCommand, Order
         var order = Order.Create(request.CustomerId, orderItems);
 
         await _orderRepository.AddAsync(order, cancellationToken);
+
+        _metrics.OrderPlaced(order.TotalAmount);
 
         _logger.LogInformation(
             "Order {OrderId} placed for customer {CustomerId} with total {TotalAmount}",

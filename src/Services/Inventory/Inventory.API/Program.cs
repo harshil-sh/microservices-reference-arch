@@ -1,4 +1,5 @@
 using Inventory.Application;
+using Inventory.Application.Metrics;
 using Microsoft.EntityFrameworkCore;
 using Inventory.API.HealthChecks;
 using Inventory.Infrastructure;
@@ -8,7 +9,8 @@ using Shared.Observability;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddObservability("Inventory.API", builder.Configuration);
+builder.Services.AddObservability("Inventory.API", builder.Configuration,
+    additionalMeterNames: [InventoryMetrics.MeterName]);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

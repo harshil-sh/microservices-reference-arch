@@ -1,6 +1,7 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Orders.Application;
+using Orders.Application.Metrics;
 using Orders.API.HealthChecks;
 using Orders.Infrastructure;
 using Orders.Infrastructure.Persistence;
@@ -9,7 +10,8 @@ using Shared.Observability;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddObservability("Orders.API", builder.Configuration);
+builder.Services.AddObservability("Orders.API", builder.Configuration,
+    additionalMeterNames: [OrdersMetrics.MeterName]);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

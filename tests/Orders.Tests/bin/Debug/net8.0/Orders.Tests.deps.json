@@ -44,6 +44,7 @@
           "Orders.Application": "1.0.0",
           "Orders.Domain": "1.0.0",
           "Orders.Infrastructure": "1.0.0",
+          "Shared.Application": "1.0.0",
           "Shared.Contracts": "1.0.0",
           "Testcontainers.MsSql": "4.11.0",
           "coverlet.collector": "6.0.0",

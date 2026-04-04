@@ -1,8 +1,10 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Orders.Application.Commands.PlaceOrder;
 using Orders.Application.DTOs;
 using Orders.Application.Interfaces;
+using Orders.Application.Metrics;
 using Orders.Domain.Entities;
 using Orders.Domain.Enums;
 using Orders.Domain.Repositories;
@@ -14,14 +16,22 @@ public class PlaceOrderCommandHandlerTests
     private readonly Mock<IOrderRepository> _repositoryMock = new();
     private readonly Mock<IEventPublisher> _publisherMock = new();
     private readonly Mock<ILogger<PlaceOrderCommandHandler>> _loggerMock = new();
+    private readonly OrdersMetrics _metrics;
     private readonly PlaceOrderCommandHandler _handler;
 
     public PlaceOrderCommandHandlerTests()
     {
+        var meterFactory = new ServiceCollection()
+            .AddMetrics()
+            .BuildServiceProvider()
+            .GetRequiredService<System.Diagnostics.Metrics.IMeterFactory>();
+        _metrics = new OrdersMetrics(meterFactory);
+
         _handler = new PlaceOrderCommandHandler(
             _repositoryMock.Object,
             _publisherMock.Object,
-            _loggerMock.Object);
+            _loggerMock.Object,
+            _metrics);
     }
 
     private static PlaceOrderCommand CreateValidCommand() => new()

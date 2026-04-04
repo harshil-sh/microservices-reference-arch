@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Inventory.Application.Interfaces;
+using Inventory.Application.Metrics;
 using Inventory.Domain.Entities;
 using Inventory.Domain.Repositories;
 
@@ -11,15 +12,18 @@ public class ReserveStockCommandHandler : IRequestHandler<ReserveStockCommand, b
     private readonly IInventoryRepository _inventoryRepository;
     private readonly IEventPublisher _eventPublisher;
     private readonly ILogger<ReserveStockCommandHandler> _logger;
+    private readonly InventoryMetrics _metrics;
 
     public ReserveStockCommandHandler(
         IInventoryRepository inventoryRepository,
         IEventPublisher eventPublisher,
-        ILogger<ReserveStockCommandHandler> logger)
+        ILogger<ReserveStockCommandHandler> logger,
+        InventoryMetrics metrics)
     {
         _inventoryRepository = inventoryRepository;
         _eventPublisher = eventPublisher;
         _logger = logger;
+        _metrics = metrics;
     }
 
     public async Task<bool> Handle(ReserveStockCommand request, CancellationToken cancellationToken)
@@ -56,6 +60,8 @@ public class ReserveStockCommandHandler : IRequestHandler<ReserveStockCommand, b
                         await _inventoryRepository.UpdateAsync(rollbackItem, cancellationToken);
                 }
 
+                _metrics.StockRollback();
+
                 var reason = inventoryItem is null
                     ? $"Product {item.ProductId} not found in inventory"
                     : $"Insufficient stock for product '{inventoryItem.ProductName}'. Available: {inventoryItem.AvailableStock}, Requested: {item.Quantity}";
@@ -66,6 +72,8 @@ public class ReserveStockCommandHandler : IRequestHandler<ReserveStockCommand, b
                     reason,
                     request.CorrelationId,
                     cancellationToken);
+
+                _metrics.StockInsufficient();
 
                 return false;
             }
@@ -83,6 +91,8 @@ public class ReserveStockCommandHandler : IRequestHandler<ReserveStockCommand, b
         _logger.LogInformation(
             "Stock reserved for order {OrderId} — {ItemCount} items",
             request.OrderId, reservedItems.Count);
+
+        _metrics.StockReserved();
 
         await _eventPublisher.PublishStockReservedAsync(
             request.OrderId,

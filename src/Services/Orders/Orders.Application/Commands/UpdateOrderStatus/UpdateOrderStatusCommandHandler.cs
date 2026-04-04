@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Orders.Application.Interfaces;
+using Orders.Application.Metrics;
 using Orders.Domain.Enums;
 using Orders.Domain.Repositories;
 
@@ -11,15 +12,18 @@ public class UpdateOrderStatusCommandHandler : IRequestHandler<UpdateOrderStatus
     private readonly IOrderRepository _orderRepository;
     private readonly IEventPublisher _eventPublisher;
     private readonly ILogger<UpdateOrderStatusCommandHandler> _logger;
+    private readonly OrdersMetrics _metrics;
 
     public UpdateOrderStatusCommandHandler(
         IOrderRepository orderRepository,
         IEventPublisher eventPublisher,
-        ILogger<UpdateOrderStatusCommandHandler> logger)
+        ILogger<UpdateOrderStatusCommandHandler> logger,
+        OrdersMetrics metrics)
     {
         _orderRepository = orderRepository;
         _eventPublisher = eventPublisher;
         _logger = logger;
+        _metrics = metrics;
     }
 
     public async Task<bool> Handle(UpdateOrderStatusCommand request, CancellationToken cancellationToken)
@@ -46,6 +50,7 @@ public class UpdateOrderStatusCommandHandler : IRequestHandler<UpdateOrderStatus
                 order.Confirm();
                 await _orderRepository.UpdateAsync(order, cancellationToken);
 
+                _metrics.OrderConfirmed();
                 _logger.LogInformation("Order {OrderId} confirmed", order.Id);
 
                 await _eventPublisher.PublishOrderConfirmedAsync(
@@ -59,6 +64,7 @@ public class UpdateOrderStatusCommandHandler : IRequestHandler<UpdateOrderStatus
                 order.Fail(request.Reason ?? "Unknown reason");
                 await _orderRepository.UpdateAsync(order, cancellationToken);
 
+                _metrics.OrderFailed();
                 _logger.LogInformation("Order {OrderId} failed: {Reason}", order.Id, request.Reason);
 
                 await _eventPublisher.PublishOrderFailedAsync(

@@ -44,13 +44,22 @@ public static class DependencyInjection
                     TimeSpan.FromSeconds(120)));
                 cfg.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
 
+                cfg.UseKillSwitch(options => options
+                    .SetActivationThreshold(5)
+                    .SetTripThreshold(0.15)
+                    .SetRestartTimeout(s: 60));
+
                 cfg.ReceiveEndpoint("orders-stock-reserved", e =>
                 {
+                    e.PrefetchCount = 16;
+                    e.ConcurrentMessageLimit = 8;
                     e.ConfigureConsumer<StockReservedConsumer>(context);
                 });
 
                 cfg.ReceiveEndpoint("orders-stock-insufficient", e =>
                 {
+                    e.PrefetchCount = 16;
+                    e.ConcurrentMessageLimit = 8;
                     e.ConfigureConsumer<StockInsufficientConsumer>(context);
                 });
 

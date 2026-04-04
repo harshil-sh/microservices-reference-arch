@@ -512,6 +512,10 @@
               "target": "Package",
               "version": "[9.1.0, )"
             },
+            "Microsoft.Extensions.Diagnostics": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.8.0, )"

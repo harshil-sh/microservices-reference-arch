@@ -1,7 +1,9 @@
 using Inventory.Application.Commands.ReserveStock;
 using Inventory.Application.Interfaces;
+using Inventory.Application.Metrics;
 using Inventory.Domain.Entities;
 using Inventory.Domain.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -12,14 +14,22 @@ public class ReserveStockCommandHandlerTests
     private readonly Mock<IInventoryRepository> _repositoryMock = new();
     private readonly Mock<IEventPublisher> _publisherMock = new();
     private readonly Mock<ILogger<ReserveStockCommandHandler>> _loggerMock = new();
+    private readonly InventoryMetrics _metrics;
     private readonly ReserveStockCommandHandler _handler;
 
     public ReserveStockCommandHandlerTests()
     {
+        var meterFactory = new ServiceCollection()
+            .AddMetrics()
+            .BuildServiceProvider()
+            .GetRequiredService<System.Diagnostics.Metrics.IMeterFactory>();
+        _metrics = new InventoryMetrics(meterFactory);
+
         _handler = new ReserveStockCommandHandler(
             _repositoryMock.Object,
             _publisherMock.Object,
-            _loggerMock.Object);
+            _loggerMock.Object,
+            _metrics);
     }
 
     private static ReserveStockCommand CreateCommand(params (Guid productId, int quantity)[] items) => new()
