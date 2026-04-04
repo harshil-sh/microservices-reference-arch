@@ -26,4 +26,9 @@
     <Project Path="src/Shared/Shared.Contracts/Shared.Contracts.csproj" />
     <Project Path="src/Shared/Shared.Observability/Shared.Observability.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Inventory.Tests/Inventory.Tests.csproj" />
+    <Project Path="tests/Notifications.Tests/Notifications.Tests.csproj" />
+    <Project Path="tests/Orders.Tests/Orders.Tests.csproj" />
+  </Folder>
 </Solution>

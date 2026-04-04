@@ -1,0 +1,12 @@
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\bin\Debug\net8.0\Inventory.Domain.deps.json
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\bin\Debug\net8.0\Inventory.Domain.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\bin\Debug\net8.0\Inventory.Domain.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.AssemblyInfoInputs.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.AssemblyInfo.cs
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.sourcelink.json
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\refint\Inventory.Domain.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\Inventory.Domain.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Domain\obj\Debug\net8.0\ref\Inventory.Domain.dll

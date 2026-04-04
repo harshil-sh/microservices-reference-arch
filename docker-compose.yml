@@ -1,0 +1,150 @@
+version: "3.8"
+
+services:
+  # ── Infrastructure ────────────────────────────────────────────────────
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"      # AMQP — services connect here
+      - "15672:15672"    # Management UI — http://localhost:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - backend
+
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    ports:
+      - "5341:5341"      # OTLP ingestion
+      - "8081:80"        # Seq UI — http://localhost:8081
+    environment:
+      ACCEPT_EULA: "Y"
+    networks:
+      - backend
+
+  orders-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: orders-db
+    environment:
+      SA_PASSWORD: "${ORDERS_DB_PASSWORD}"
+      ACCEPT_EULA: "Y"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"${ORDERS_DB_PASSWORD}\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - backend
+
+  inventory-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: inventory-db
+    environment:
+      SA_PASSWORD: "${INVENTORY_DB_PASSWORD}"
+      ACCEPT_EULA: "Y"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"${INVENTORY_DB_PASSWORD}\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - backend
+
+  # ── Application Services ──────────────────────────────────────────────
+
+  gateway:
+    build:
+      context: .
+      dockerfile: src/Gateway/Gateway.API/Dockerfile
+    container_name: gateway
+    ports:
+      - "8080:80"        # Only externally exposed port
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      Observability__SeqEndpoint: "http://seq:5341"
+    depends_on:
+      orders-api:
+        condition: service_started
+      inventory-api:
+        condition: service_started
+    networks:
+      - backend
+
+  orders-api:
+    build:
+      context: .
+      dockerfile: src/Services/Orders/Orders.API/Dockerfile
+    container_name: orders-api
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__OrdersDb: "Server=orders-db;Database=orders_db;User Id=sa;Password=${ORDERS_DB_PASSWORD};TrustServerCertificate=True;MultipleActiveResultSets=true"
+      ConnectionStrings__RabbitMq: "rabbitmq"
+      RabbitMq__Username: "guest"
+      RabbitMq__Password: "guest"
+      Observability__SeqEndpoint: "http://seq:5341"
+    depends_on:
+      orders-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      seq:
+        condition: service_started
+    networks:
+      - backend
+
+  inventory-api:
+    build:
+      context: .
+      dockerfile: src/Services/Inventory/Inventory.API/Dockerfile
+    container_name: inventory-api
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__InventoryDb: "Server=inventory-db;Database=inventory_db;User Id=sa;Password=${INVENTORY_DB_PASSWORD};TrustServerCertificate=True;MultipleActiveResultSets=true"
+      ConnectionStrings__RabbitMq: "rabbitmq"
+      RabbitMq__Username: "guest"
+      RabbitMq__Password: "guest"
+      Observability__SeqEndpoint: "http://seq:5341"
+    depends_on:
+      inventory-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      seq:
+        condition: service_started
+    networks:
+      - backend
+
+  notifications-worker:
+    build:
+      context: .
+      dockerfile: src/Services/Notifications/Notifications.Worker/Dockerfile
+    container_name: notifications-worker
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      ConnectionStrings__RabbitMq: "rabbitmq"
+      RabbitMq__Username: "guest"
+      RabbitMq__Password: "guest"
+      Observability__SeqEndpoint: "http://seq:5341"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      seq:
+        condition: service_started
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

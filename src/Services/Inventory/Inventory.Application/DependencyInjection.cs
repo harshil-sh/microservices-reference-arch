@@ -1,0 +1,20 @@
+using FluentValidation;
+using Inventory.Application.Behaviors;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Inventory.Application;
+
+public static class DependencyInjection
+{
+    public static IServiceCollection AddInventoryApplication(this IServiceCollection services)
+    {
+        var assembly = typeof(DependencyInjection).Assembly;
+
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+        services.AddValidatorsFromAssembly(assembly);
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+        return services;
+    }
+}

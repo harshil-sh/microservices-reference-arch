@@ -1,0 +1,16 @@
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\bin\Debug\net8.0\Inventory.Application.deps.json
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\bin\Debug\net8.0\Inventory.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\bin\Debug\net8.0\Inventory.Application.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\bin\Debug\net8.0\Inventory.Domain.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\bin\Debug\net8.0\Inventory.Domain.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.csproj.AssemblyReference.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.AssemblyInfoInputs.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.AssemblyInfo.cs
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.csproj.CoreCompileInputs.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.sourcelink.json
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventor.1DAC6D85.Up2Date
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\refint\Inventory.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\Inventory.Application.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Application\obj\Debug\net8.0\ref\Inventory.Application.dll

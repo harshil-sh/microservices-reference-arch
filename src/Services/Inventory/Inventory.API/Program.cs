@@ -1,15 +1,43 @@
+using Inventory.Application;
+using Microsoft.EntityFrameworkCore;
+using Inventory.API.HealthChecks;
+using Inventory.Infrastructure;
+using Inventory.Infrastructure.Persistence;
+using Inventory.Infrastructure.Persistence.Seed;
+using Shared.Observability;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddObservability("Inventory.API", builder.Configuration);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddInventoryApplication();
+builder.Services.AddInventoryInfrastructure(builder.Configuration);
+
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>("inventory-db");
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<InventoryDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+    try
+    {
+        await context.Database.MigrateAsync();
+        await InventoryDbContextSeed.SeedAsync(context, logger);
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred while migrating or seeding the inventory database");
+    }
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,9 +45,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 app.Run();
