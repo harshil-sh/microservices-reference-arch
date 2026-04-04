@@ -133,6 +133,7 @@ public class UpdateOrderStatusCommandHandlerTests
     public async Task Handle_InvalidStatusTransition_ToPending_ReturnsFalse()
     {
         var order = CreatePendingOrder();
+        order.Confirm(); // order is now Confirmed
         _repositoryMock
             .Setup(r => r.GetByIdAsync(order.Id, It.IsAny<CancellationToken>()))
             .ReturnsAsync(order);
@@ -140,7 +141,7 @@ public class UpdateOrderStatusCommandHandlerTests
         var command = new UpdateOrderStatusCommand
         {
             OrderId = order.Id,
-            NewStatus = OrderStatus.Pending,
+            NewStatus = OrderStatus.Pending, // Pending is not handled in switch
             CorrelationId = "test"
         };
 

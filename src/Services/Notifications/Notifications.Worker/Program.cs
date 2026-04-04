@@ -27,54 +27,35 @@ builder.Services.AddMassTransit(bus =>
             h.Password(configuration["RabbitMq:Password"] ?? "guest");
         });
 
+        cfg.UseDelayedRedelivery(r => r.Intervals(
+            TimeSpan.FromSeconds(30),
+            TimeSpan.FromSeconds(60),
+            TimeSpan.FromSeconds(120)));
+        cfg.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
+
         cfg.ReceiveEndpoint("notifications-order-placed", e =>
         {
             e.ConfigureConsumer<OrderPlacedConsumer>(context);
-            e.UseDelayedRedelivery(r => r.Intervals(
-                TimeSpan.FromSeconds(30),
-                TimeSpan.FromSeconds(60),
-                TimeSpan.FromSeconds(120)));
-            e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
         });
 
         cfg.ReceiveEndpoint("notifications-stock-reserved", e =>
         {
             e.ConfigureConsumer<StockReservedConsumer>(context);
-            e.UseDelayedRedelivery(r => r.Intervals(
-                TimeSpan.FromSeconds(30),
-                TimeSpan.FromSeconds(60),
-                TimeSpan.FromSeconds(120)));
-            e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
         });
 
         cfg.ReceiveEndpoint("notifications-stock-insufficient", e =>
         {
             e.ConfigureConsumer<StockInsufficientConsumer>(context);
-            e.UseDelayedRedelivery(r => r.Intervals(
-                TimeSpan.FromSeconds(30),
-                TimeSpan.FromSeconds(60),
-                TimeSpan.FromSeconds(120)));
-            e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
         });
 
         cfg.ReceiveEndpoint("notifications-order-confirmed", e =>
         {
             e.ConfigureConsumer<OrderConfirmedConsumer>(context);
-            e.UseDelayedRedelivery(r => r.Intervals(
-                TimeSpan.FromSeconds(30),
-                TimeSpan.FromSeconds(60),
-                TimeSpan.FromSeconds(120)));
-            e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
         });
 
         cfg.ReceiveEndpoint("notifications-order-failed", e =>
         {
             e.ConfigureConsumer<OrderFailedConsumer>(context);
-            e.UseDelayedRedelivery(r => r.Intervals(
-                TimeSpan.FromSeconds(30),
-                TimeSpan.FromSeconds(60),
-                TimeSpan.FromSeconds(120)));
-            e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
         });
 
         cfg.ConfigureEndpoints(context);

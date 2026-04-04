@@ -38,24 +38,20 @@ public static class DependencyInjection
                     h.Password(configuration["RabbitMq:Password"] ?? "guest");
                 });
 
+                cfg.UseDelayedRedelivery(r => r.Intervals(
+                    TimeSpan.FromSeconds(30),
+                    TimeSpan.FromSeconds(60),
+                    TimeSpan.FromSeconds(120)));
+                cfg.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
+
                 cfg.ReceiveEndpoint("orders-stock-reserved", e =>
                 {
                     e.ConfigureConsumer<StockReservedConsumer>(context);
-                    e.UseDelayedRedelivery(r => r.Intervals(
-                        TimeSpan.FromSeconds(30),
-                        TimeSpan.FromSeconds(60),
-                        TimeSpan.FromSeconds(120)));
-                    e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
                 });
 
                 cfg.ReceiveEndpoint("orders-stock-insufficient", e =>
                 {
                     e.ConfigureConsumer<StockInsufficientConsumer>(context);
-                    e.UseDelayedRedelivery(r => r.Intervals(
-                        TimeSpan.FromSeconds(30),
-                        TimeSpan.FromSeconds(60),
-                        TimeSpan.FromSeconds(120)));
-                    e.UseMessageRetry(r => r.Exponential(3, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(125), TimeSpan.FromSeconds(5)));
                 });
 
                 cfg.ConfigureEndpoints(context);
