@@ -190,4 +190,3 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Servic
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.API\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.API\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
