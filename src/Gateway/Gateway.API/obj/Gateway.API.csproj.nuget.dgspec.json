@@ -55,9 +55,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Swashbuckle.AspNetCore": {
+            "Yarp.ReverseProxy": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[2.1.0, )"
             }
           },
           "imports": [

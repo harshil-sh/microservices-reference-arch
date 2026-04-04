@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-Notifications.Worker-9e0b34aa-6ee3-497b-b900-f415ba0d06b7")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Notifications.Worker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb106bd201b4ad6e068604e8ce3c39c1f432b643")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88b30ea83d5f15254e2e1d7799435cef164ce96c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Notifications.Worker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Notifications.Worker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

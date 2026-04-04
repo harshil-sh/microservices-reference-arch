@@ -16,13 +16,8 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gatewa
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Gateway.API.pdb
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Shared.Observability.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Shared.Observability.pdb
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\Gateway.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -32,7 +27,6 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gatewa
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\swae.build.ex.cache
-C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\Gateway..9802D141.Up2Date
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\Gateway.API.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\obj\Debug\net8.0\refint\Gateway.API.dll
@@ -66,3 +60,5 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gatewa
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\System.IO.Hashing.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Gateway\Gateway.API\bin\Debug\net8.0\Yarp.ReverseProxy.dll
