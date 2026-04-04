@@ -18,3 +18,5 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Servic
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.Infrastructure\obj\Debug\net8.0\refint\Orders.Infrastructure.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.Infrastructure\obj\Debug\net8.0\Orders.Infrastructure.pdb
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.Infrastructure\obj\Debug\net8.0\ref\Orders.Infrastructure.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.Infrastructure\bin\Debug\net8.0\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Orders\Orders.Infrastructure\bin\Debug\net8.0\Shared.Application.pdb

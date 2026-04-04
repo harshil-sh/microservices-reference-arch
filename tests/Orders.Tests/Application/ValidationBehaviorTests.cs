@@ -2,7 +2,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
 using Moq;
-using Orders.Application.Behaviors;
+using Shared.Application.Behaviors;
 using Orders.Application.Commands.PlaceOrder;
 using Orders.Application.DTOs;
 

@@ -1,7 +1,7 @@
 using FluentValidation;
 using MediatR;
 
-namespace Inventory.Application.Behaviors;
+namespace Shared.Application.Behaviors;
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
@@ -31,9 +31,7 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
                 .ToList();
 
             if (failures.Count != 0)
-            {
                 throw new ValidationException(failures);
-            }
         }
 
         return await next(cancellationToken);

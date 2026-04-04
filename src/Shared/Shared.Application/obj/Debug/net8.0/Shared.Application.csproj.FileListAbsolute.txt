@@ -1,0 +1,13 @@
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\bin\Debug\net8.0\Shared.Application.deps.json
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\bin\Debug\net8.0\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\bin\Debug\net8.0\Shared.Application.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.csproj.AssemblyReference.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.AssemblyInfoInputs.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.AssemblyInfo.cs
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.csproj.CoreCompileInputs.cache
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.sourcelink.json
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\refint\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\Shared.Application.pdb
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Shared\Shared.Application\obj\Debug\net8.0\ref\Shared.Application.dll

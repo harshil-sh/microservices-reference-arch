@@ -489,3 +489,5 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Orde
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Orders.Tests\obj\Debug\net8.0\Orders.Tests.pdb
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Orders.Tests\obj\Debug\net8.0\Orders.Tests.genruntimeconfig.cache
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Orders.Tests\obj\Debug\net8.0\ref\Orders.Tests.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Orders.Tests\bin\Debug\net8.0\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Orders.Tests\bin\Debug\net8.0\Shared.Application.pdb

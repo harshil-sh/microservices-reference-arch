@@ -1,7 +1,7 @@
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Orders.Application.Behaviors;
+using Shared.Application.Behaviors;
 
 namespace Orders.Application;
 

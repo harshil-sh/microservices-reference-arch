@@ -682,7 +682,8 @@
         "dependencies": {
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.1.0",
-          "Orders.Domain": "1.0.0"
+          "Orders.Domain": "1.0.0",
+          "Shared.Application": "1.0.0"
         },
         "runtime": {
           "Orders.Application.dll": {
@@ -694,6 +695,18 @@
       "Orders.Domain/1.0.0": {
         "runtime": {
           "Orders.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Shared.Application/1.0.0": {
+        "dependencies": {
+          "FluentValidation.DependencyInjectionExtensions": "12.1.1",
+          "MediatR": "14.1.0"
+        },
+        "runtime": {
+          "Shared.Application.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1092,6 +1105,11 @@
       "sha512": ""
     },
     "Orders.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

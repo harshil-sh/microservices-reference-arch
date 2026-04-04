@@ -1191,7 +1191,8 @@
         "dependencies": {
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "Inventory.Domain": "1.0.0",
-          "MediatR": "14.1.0"
+          "MediatR": "14.1.0",
+          "Shared.Application": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Inventory.Application.dll": {}
@@ -1208,6 +1209,20 @@
         },
         "runtime": {
           "bin/placeholder/Inventory.Domain.dll": {}
+        }
+      },
+      "Shared.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "FluentValidation.DependencyInjectionExtensions": "12.1.1",
+          "MediatR": "14.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.Application.dll": {}
         }
       },
       "Shared.Contracts/1.0.0": {
@@ -3036,6 +3051,11 @@
       "type": "project",
       "path": "../Inventory.Domain/Inventory.Domain.csproj",
       "msbuildProject": "../Inventory.Domain/Inventory.Domain.csproj"
+    },
+    "Shared.Application/1.0.0": {
+      "type": "project",
+      "path": "../../../Shared/Shared.Application/Shared.Application.csproj",
+      "msbuildProject": "../../../Shared/Shared.Application/Shared.Application.csproj"
     },
     "Shared.Contracts/1.0.0": {
       "type": "project",

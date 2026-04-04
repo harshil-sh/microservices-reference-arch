@@ -18,3 +18,5 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Servic
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Infrastructure\obj\Debug\net8.0\refint\Inventory.Infrastructure.dll
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Infrastructure\obj\Debug\net8.0\Inventory.Infrastructure.pdb
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Infrastructure\obj\Debug\net8.0\ref\Inventory.Infrastructure.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Infrastructure\bin\Debug\net8.0\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\src\Services\Inventory\Inventory.Infrastructure\bin\Debug\net8.0\Shared.Application.pdb

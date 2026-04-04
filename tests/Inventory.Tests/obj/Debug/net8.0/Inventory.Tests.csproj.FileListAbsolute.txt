@@ -176,3 +176,5 @@ C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Inve
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Inventory.Tests\obj\Debug\net8.0\Inventory.Tests.pdb
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Inventory.Tests\obj\Debug\net8.0\Inventory.Tests.genruntimeconfig.cache
 C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Inventory.Tests\obj\Debug\net8.0\ref\Inventory.Tests.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Inventory.Tests\bin\Debug\net8.0\Shared.Application.dll
+C:\Users\Harshil\source\repos\harshil-sh\microservices-reference-arch\tests\Inventory.Tests\bin\Debug\net8.0\Shared.Application.pdb

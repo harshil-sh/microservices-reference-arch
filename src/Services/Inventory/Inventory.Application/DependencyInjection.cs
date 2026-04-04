@@ -1,7 +1,7 @@
 using FluentValidation;
-using Inventory.Application.Behaviors;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Application.Behaviors;
 
 namespace Inventory.Application;
 

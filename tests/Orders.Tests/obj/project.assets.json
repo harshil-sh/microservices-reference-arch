@@ -3447,7 +3447,8 @@
         "dependencies": {
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.1.0",
-          "Orders.Domain": "1.0.0"
+          "Orders.Domain": "1.0.0",
+          "Shared.Application": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Orders.Application.dll": {}
@@ -3480,6 +3481,20 @@
         },
         "runtime": {
           "bin/placeholder/Orders.Infrastructure.dll": {}
+        }
+      },
+      "Shared.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "FluentValidation.DependencyInjectionExtensions": "12.1.1",
+          "MediatR": "14.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.Application.dll": {}
         }
       },
       "Shared.Contracts/1.0.0": {
@@ -9864,6 +9879,11 @@
       "type": "project",
       "path": "../../src/Services/Orders/Orders.Infrastructure/Orders.Infrastructure.csproj",
       "msbuildProject": "../../src/Services/Orders/Orders.Infrastructure/Orders.Infrastructure.csproj"
+    },
+    "Shared.Application/1.0.0": {
+      "type": "project",
+      "path": "../../src/Shared/Shared.Application/Shared.Application.csproj",
+      "msbuildProject": "../../src/Shared/Shared.Application/Shared.Application.csproj"
     },
     "Shared.Contracts/1.0.0": {
       "type": "project",
