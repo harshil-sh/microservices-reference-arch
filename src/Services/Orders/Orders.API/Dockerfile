@@ -13,6 +13,7 @@ COPY src/Services/Orders/Orders.Domain/Orders.Domain.csproj src/Services/Orders/
 COPY src/Services/Orders/Orders.Infrastructure/Orders.Infrastructure.csproj src/Services/Orders/Orders.Infrastructure/
 COPY src/Shared/Shared.Contracts/Shared.Contracts.csproj src/Shared/Shared.Contracts/
 COPY src/Shared/Shared.Observability/Shared.Observability.csproj src/Shared/Shared.Observability/
+COPY src/Shared/Shared.Application/Shared.Application.csproj src/Shared/Shared.Application/
 COPY src/Services/Inventory/Inventory.API/Inventory.API.csproj src/Services/Inventory/Inventory.API/
 COPY src/Services/Inventory/Inventory.Application/Inventory.Application.csproj src/Services/Inventory/Inventory.Application/
 COPY src/Services/Inventory/Inventory.Domain/Inventory.Domain.csproj src/Services/Inventory/Inventory.Domain/

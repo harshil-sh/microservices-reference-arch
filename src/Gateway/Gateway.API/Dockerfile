@@ -10,6 +10,7 @@ COPY microservices-reference-arch.slnx .
 COPY src/Gateway/Gateway.API/Gateway.API.csproj src/Gateway/Gateway.API/
 COPY src/Shared/Shared.Contracts/Shared.Contracts.csproj src/Shared/Shared.Contracts/
 COPY src/Shared/Shared.Observability/Shared.Observability.csproj src/Shared/Shared.Observability/
+COPY src/Shared/Shared.Application/Shared.Application.csproj src/Shared/Shared.Application/
 COPY src/Services/Orders/Orders.API/Orders.API.csproj src/Services/Orders/Orders.API/
 COPY src/Services/Orders/Orders.Application/Orders.Application.csproj src/Services/Orders/Orders.Application/
 COPY src/Services/Orders/Orders.Domain/Orders.Domain.csproj src/Services/Orders/Orders.Domain/
