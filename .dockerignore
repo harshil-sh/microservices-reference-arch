@@ -12,3 +12,6 @@
 **/*.suo
 **/launchSettings.json
 .env
+.env.example
+tests/
+docs/
